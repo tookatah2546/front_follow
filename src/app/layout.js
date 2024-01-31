@@ -2,6 +2,8 @@ import { Sarabun } from "next/font/google";
 import "./globals.css";
 import NavigationMenu from "@/components/layouts/navigationmanu";
 import NavigationTop from "@/components/layouts/navigationtop";
+import { ProjectProvider } from "./context/useDataproject";
+import { AuthProvider } from "./context/authentication";
 
 const sarabun = Sarabun({ 
   weight: ["400","600","700"],
@@ -17,12 +19,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={sarabun.className} >
-      <main className="w-full md:w-2/4 h-screen  mx-auto   items-center justify-between ">
-        <NavigationTop/>
-        {children}
-        <NavigationMenu/>
-    </main>
-        
+      <AuthProvider>
+        <ProjectProvider>  
+            <main className="w-full md:w-2/4 h-screen  mx-auto   items-center justify-between ">
+            
+              <NavigationTop/>
+              {children}
+              <NavigationMenu/>
+            
+            </main>
+        </ProjectProvider>
+      </AuthProvider>
+         
       </body>
     </html>
   );

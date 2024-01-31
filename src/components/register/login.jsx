@@ -4,37 +4,19 @@ import Button from "../shared/button";
 import * as React from "react"
 import { useForm } from "react-hook-form"
 import axios from "axios";
+import { useAuth } from "@/app/context/authentication";
 
 
 const LoginUsers= () =>{
 
-    const {
-        register,
-        handleSubmit,
-        setError,
-        formState: { errors },
-      } = useForm()
+  const {register,handleSubmit,setError,formState: { errors },} = useForm()
 
-    const onSubmit = async(data) => {
-        
-       
-        axios.post('http://localhost:8000/api/token/', data)
-          .then(function (response) {
-            console.log(response);
-            console.log("login success");
-            
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-            
-      
-      }
-
+  const {submitlogin} = useAuth()
+    
     
 
     return (
-        <form className="flex flex-col border rounded-xl p-5 pt-8 " onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col border rounded-xl p-5 pt-8 " onSubmit={handleSubmit(submitlogin)}>
             <div className="mb-8">
                 <p className="text-4xl">เข้าสู่ระบบ</p>
             </div>
@@ -52,10 +34,10 @@ const LoginUsers= () =>{
             <div className="">
               <span>ยังไม่มีบัญชี ?</span><a href="register_users" className="ml-3 text-success">ลงทะเบียน</a>  
             </div>
-            <div className="border-b-2 mt-4 border-extar-light-grey mb-3 "></div>
+            <div className="border-b-2 my-8 border-extar-light-grey  "></div>
             
             
-            <Button  color="primary" onClick={onSubmit}/>
+            <Button  color="primary" onClick={submitlogin} title="เข้าสู่ระบบ"/>
             
             <div className="font-medium text-center mt-4 ">
                 <p className="mb-2  text-mid-grey">การสร้างบัญชีหรือการเข้าใช้งาน หมายถึงคุณได้อ่านและยอมรับ</p>

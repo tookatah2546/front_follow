@@ -68,23 +68,14 @@ const RegisterUsers = () =>{
 
                 
             </div>
-            <div >
-                <p className="after:content-['*'] after:ml-0.5 after:text-red-500 mb-3 mt-4">รหัสกลุ่ม</p>
-                <Select 
-                
-                options={Groupid}
-                {...register("Groupid",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.Groupid? "true":"false"}
-                onChange={handleSelectGroups}
-                ></Select>
-                {errors.Groupid && <p  role="alert" className="text-red-500 ">{errors.Groupid?.message}</p>}
-            </div>
+            
             <div className="border-b-2 mt-8 border-extar-light-grey "></div>
             <div className="pt-4 pb-3">
                 <input type="checkbox" className="border w-4 h-4 accent-black  " {...register("Checkbox",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.Checkbox? "true":"false"}></input>
                 <label className="ml-2 after:content-['*'] after:ml-0.5 after:text-red-500">ฉันได้อ่านและยอมรับเงื่อนไขการเป็นสมาชิกและนโยบายความเป็นส่วนตัว</label>
                 {errors.Checkbox && <p  role="alert" className="text-red-500 ">{errors.Checkbox?.message}</p>}
             </div>
-            <Link href="/eachgroup" className="h-12 text-white  border rounded-xl  bg-primary text-center "><button className="mt-2 text-center" type="submit">ตกลง</button></Link>
+            <Button  color="primary" onClick={onSubmit} title="ลงทะเบียน"/>
             <div className="font-medium text-center mt-4 ">
                 <p className="mb-2  text-mid-grey">การสร้างบัญชีหรือการเข้าใช้งาน หมายถึงคุณได้อ่านและยอมรับ</p>
                 <p>เงื่อนไขข้อกำหนด <span className="text-mid-grey">และ</span> นโยบายความเป็นส่วนตัว</p>
@@ -98,3 +89,13 @@ const RegisterUsers = () =>{
 
 export default RegisterUsers;
 
+/*<div >
+                <p className="after:content-['*'] after:ml-0.5 after:text-red-500 mb-3 mt-4">รหัสกลุ่ม</p>
+                <Select 
+                
+                options={Groupid}
+                {...register("Groupid",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.Groupid? "true":"false"}
+                onChange={handleSelectGroups}
+                ></Select>
+                {errors.Groupid && <p  role="alert" className="text-red-500 ">{errors.Groupid?.message}</p>}
+            </div>*/ 
