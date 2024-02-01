@@ -11,12 +11,14 @@ const LoginUsers= () =>{
 
   const {register,handleSubmit,setError,formState: { errors },} = useForm()
 
-  const {submitlogin} = useAuth()
+  const {submitlogin,currentUser} = useAuth()
     
-    
+  const onSubmit = (data) => {
+    console.log(data)
+  }
 
     return (
-        <form className="flex flex-col border rounded-xl p-5 pt-8 " onSubmit={handleSubmit(submitlogin)}>
+        <form className="flex flex-col border rounded-xl p-5 mt-14 " onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-8">
                 <p className="text-4xl">เข้าสู่ระบบ</p>
             </div>
@@ -36,8 +38,14 @@ const LoginUsers= () =>{
             </div>
             <div className="border-b-2 my-8 border-extar-light-grey  "></div>
             
+            {
+              currentUser ? (
+              <Button  color="primary" onClick={submitlogin} title="เข้าสู่ระบบ"/>
+              ):(
+                <Button  color="primary" onClick={onSubmit} title="เข้าสู่ระบบ"/>
+                )
+            }
             
-            <Button  color="primary" onClick={submitlogin} title="เข้าสู่ระบบ"/>
             
             <div className="font-medium text-center mt-4 ">
                 <p className="mb-2  text-mid-grey">การสร้างบัญชีหรือการเข้าใช้งาน หมายถึงคุณได้อ่านและยอมรับ</p>

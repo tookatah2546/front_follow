@@ -10,25 +10,31 @@ axios.defaults.withCredentials = true;
 const AuthContext = createContext();
 
 const client = axios.create({
-    baseURL: "http://localhost:8000"
+    baseURL: "http://127.0.0.1:8000"
   });
 
 export const AuthProvider = ({ children }) => {
   //const [user, setUser] = useState(null);
   const [currentUser, setCurrentUser] = useState();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('admin');
+  const [password, setPassword] = useState('admin');
 
   const submitlogin = (e) => {
     e.preventDefault();
     client.post(
       "/api/login",
       {
-        username: 'username',
-        password: 'password',
+        username: username,
+        password: password,
       }
     ).then(function(res) {
       setCurrentUser(true);
+      console.log(res)
+      localStorage.setItem("token",res.data.token)
+      client.defaults.headers.common['Authorization'] = "Token "+ localStorage.getItem("token")
+      
+
+      client.get("/api/user").then(r => console.log(r))
     }).catch(function(error) {
         console.error('Login failed:', error);
       });
@@ -36,6 +42,8 @@ export const AuthProvider = ({ children }) => {
 
   const submitlogout = (e) => {
     e.preventDefault();
+    localStorage.removeItem("token")
+    client.defaults.headers.common["Authorization"] = null;
     client.post(
       "/api/logout",
       {withCredentials: true}
