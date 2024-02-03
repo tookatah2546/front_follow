@@ -16,8 +16,8 @@ const client = axios.create({
 export const AuthProvider = ({ children }) => {
   //const [user, setUser] = useState(null);
   const [currentUser, setCurrentUser] = useState();
-  const [username, setUsername] = useState('admin');
-  const [password, setPassword] = useState('admin');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const submitlogin = (e) => {
     e.preventDefault();

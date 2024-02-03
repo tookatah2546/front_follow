@@ -21,7 +21,7 @@ const NavigationTop = ()=>{
             <a
               onClick={submitLogout}
               className="w-full my-1 text-white focus:text-secondary hover:text-secondary justify-center inline-block text-center pt-2 pb-1">  
-              <button type="submit" className="tab tab-kategori block text-base font-extrabold ">ออกจากระบบ</button>
+              <button type="submit" className="tab tab-kategori block text-base ">ออกจากระบบ</button>
             </a>
           </div>
         
@@ -29,7 +29,7 @@ const NavigationTop = ()=>{
           
             <div id="tabs" className="w-full flex  ">
             
-              <a href="#"
+              <a href="Profile"
                 className="w-full text-xl my-1 text-white focus:text-secondary hover:text-secondary justify-center inline-block text-center pt-2 pb-1">
                 <span className="tab tab-kategori block text-base ">โปรไฟล์</span>
               </a>

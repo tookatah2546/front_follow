@@ -42,7 +42,7 @@ const RegisterUsers = () =>{
     return (
         <form className="flex flex-col border rounded-xl p-5 mt-4  "onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-8">
-                <p className="text-4xl">ลงทะเบียน</p>
+                <p className="text-xl font-extrabold text-center">ลงทะเบียน</p>
             </div>
             <div className="flex flex-col ">
                 <label className="after:content-['*'] after:ml-0.5 after:text-red-500 pb-3">ชื่อผู้ใช้</label>

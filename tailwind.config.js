@@ -22,6 +22,7 @@ module.exports = {
         "mid-grey": "#666E82",
         "light-grey": "#999FAC",
         "extar-light-grey": "#CCCFD5",
+        "yellow":"#FFE500",
       }
     },
   },

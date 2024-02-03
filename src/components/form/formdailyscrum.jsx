@@ -35,7 +35,7 @@ const FormDailyScrum = () =>{
     return (
         <form className="mt-5  rounded-xl p-5" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
-                <p className="text-3xl text-dark-grey">ฟอร์ม Daily Scrum</p>
+                <p className="text-dark-grey font-extrabold">Daily Scrum</p>
             </div>
             <div className="flex flex-col   ">
                 <label className="after:content-['*'] after:ml-0.5 after:text-red-500 pb-3 pt-4">ชื่อ</label>

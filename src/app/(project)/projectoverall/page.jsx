@@ -11,8 +11,14 @@ const ProjectOverAllPage = () => {
 
     return (
       <main className=" " >
-       
-       <p>โปรเจกต์ทั้งหมด</p>
+       <div className="flex flex-row justify-between">
+        <p className="font-extrabold my-3">โปรเจกต์ทั้งหมด</p>
+        <a href="creategroup">
+            <div className="">
+              <button className=" w-36 h-12 text-mid-grey rounded-3xl border border-mid-grey drop-shadow-lg font-extrabold">+ สร้างโปรเจกต์</button>
+          </div>
+        </a>
+       </div>
        <div>
             {projects.map((e)=>{
                 return (
@@ -22,13 +28,7 @@ const ProjectOverAllPage = () => {
                 )
             })}
        </div>
-       <a href="creategroup">
-          <div className="">
-
-            <button className=" w-36 h-12 text-extar-light-grey rounded-3xl border drop-shadow-lg fixed ">+ สร้างโปรเจกต์</button>
-
-          </div>
-        </a>
+       
         
       </main>
     )

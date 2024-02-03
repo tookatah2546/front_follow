@@ -13,14 +13,12 @@ const LoginUsers= () =>{
 
   const {submitlogin,currentUser} = useAuth()
     
-  const onSubmit = (data) => {
-    console.log(data)
-  }
+  
 
     return (
-        <form className="flex flex-col border rounded-xl p-5 mt-14 " onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col border rounded-xl p-5 mt-14 " onSubmit={handleSubmit(submitlogin)}>
             <div className="mb-8">
-                <p className="text-4xl">เข้าสู่ระบบ</p>
+                <p className="text-xl font-extrabold text-center">เข้าสู่ระบบ</p>
             </div>
             <div className="flex flex-col pb-6 ">
                 <label className="after:content-['*'] after:ml-0.5 after:text-red-500 pb-3">ชื่อผู้ใช้</label>
@@ -34,7 +32,7 @@ const LoginUsers= () =>{
 
             </div>
             <div className="">
-              <span>ยังไม่มีบัญชี ?</span><a href="register_users" className="ml-3 text-success">ลงทะเบียน</a>  
+              <span>ยังไม่มีบัญชี ?</span><a href="register_users" className="ml-3 text-success underline underline-offset-2">ลงทะเบียน</a>  
             </div>
             <div className="border-b-2 my-8 border-extar-light-grey  "></div>
             
@@ -42,7 +40,7 @@ const LoginUsers= () =>{
               currentUser ? (
               <Button  color="primary" onClick={submitlogin} title="เข้าสู่ระบบ"/>
               ):(
-                <Button  color="primary" onClick={onSubmit} title="เข้าสู่ระบบ"/>
+                <Button  color="primary" onClick={submitlogin} title="เข้าสู่ระบบ"/>
                 )
             }
             
