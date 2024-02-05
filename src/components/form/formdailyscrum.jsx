@@ -2,35 +2,66 @@
 import React from "react";
 import { useForm } from "react-hook-form"
 import Select from "react-select"
-
+import axios from "axios";
+import { useAuth } from "@/app/context/authentication";
 
 const FormDailyScrum = () =>{
+    const url = 'http://127.0.0.1:8000/api/dailyscrum/'
 
-    const Status = [
-        {value: '1',label: "วันนี้ทำงาน"},
-        {value: '2',label: "ป่วย"},
-        {value: '3',label: "ติดธุระ"},
-        {value: '4',label: "ตกลงกันว่าวันนี้ไม่ทำงาน"},
-        {value: '5',label: "อื่น ๆ"},
-
+    const {currentUser} = useAuth()
+    //console.log(currentUser);
+    const note = [
+        {value: 'work',label: "วันนี้ทำงาน"},
+        {value: 'sick',label: "ป่วย"},
+        {value: 'busy',label: "ติดธุระ"},
+        {value: 'pass',label: "ตกลงกันว่าวันนี้ไม่ทำงาน"},
     ]
+
+    async function getScrumDaily() {
+        try {
+          const response = await axios.get(url);
+          //console.log(response);
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      getScrumDaily()
 
     const {
         register,
         handleSubmit,
         setValue,
         reset,
+        clearErrors,
+        getValues,
         formState: { errors },
       } = useForm()
 
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
         console.log(data)
-      }
+        try {
+            const response = await axios.post(url);
+            console.log(response);
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      
     
-    const handleSelectStatus = (e) =>{
-        setValue('Groupid',e.value)
-        console.log("setValue",setValue);
+    const handleSelectNote = (e) =>{
+        setValue('note',e.value)
+        clearErrors("note")
+        
     }
+
+    
+
+    const get_currentUser_fullname = () => {
+      return `${currentUser?.first_name ?? "first_name"} ${currentUser?.last_name ?? "last_name"}`
+    }
+
+
+
     
     return (
         <form className="mt-5  rounded-xl p-5" onSubmit={handleSubmit(onSubmit)}>
@@ -38,17 +69,22 @@ const FormDailyScrum = () =>{
                 <p className="text-dark-grey font-extrabold">Daily Scrum</p>
             </div>
             <div className="flex flex-col   ">
-                <label className="after:content-['*'] after:ml-0.5 after:text-red-500 pb-3 pt-4">ชื่อ</label>
-                <input placeholder="ชื่อ"  className="shadow px-5 w-auto h-12 rounded-xl sm:w-auto lg:w-auto "  {...register("FirstName",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.FirstName? "true":"false"}></input>
-                {errors.FirstName && <p  role="alert" className="text-red-500 ">{errors.FirstName?.message}</p>}
+                
+                <label className="  pb-3 pt-4">ชื่อ - สกุล</label>
+                <input value={get_currentUser_fullname()} placeholder="ชื่อ"  className="shadow px-5 w-auto h-12 rounded-xl sm:w-auto lg:w-auto "  ></input>
+               
+                <label className="  pb-3 pt-4">รหัสนิสิต</label>
+                <input value={currentUser?.id_student} placeholder="รหัสนิสิต" className="px-5 shadow w-auto h-12 rounded-xl  sm:w-auto lg:w-auto"></input>
 
-                <label className="after:content-['*'] after:ml-0.5 after:text-red-500 pb-3 pt-4">รหัสโปรเจกต์</label>
-                <input placeholder="รหัสโปรเจกต์" className="px-5 shadow w-auto h-12 rounded-xl sm:w-auto lg:w-auto"{...register("IdProject",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.IdProject? "true":"false"}></input>
-                {errors.IdProject && <p  role="alert" className="text-red-500 ">{errors.IdProject?.message}</p>}
+                <label className="  pb-3 pt-4">ชื่อวิชา</label>
+                <input placeholder="ชื่อวิชา" className="px-5 shadow w-auto h-12 rounded-xl  sm:w-auto lg:w-auto"></input>
+
+                <label className="  pb-3 pt-4">รหัสโปรเจกต์</label>
+                <input placeholder="รหัสโปรเจกต์" className="px-5 shadow w-auto h-12 rounded-xl  sm:w-auto lg:w-auto"></input>
 
                 <label className="after:content-['*'] after:ml-0.5 after:text-red-500 pb-3 pt-4">วันที่</label>
-                <input placeholder="วันที่" className="px-5 shadow w-auto h-12 rounded-xl sm:w-auto lg:w-auto"{...register("day",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.day? "true":"false"}></input>
-                {errors.day && <p  role="alert" className="text-red-500 ">{errors.day?.message}</p>}
+                <input placeholder="วันที่" type="date" className="px-5 shadow w-auto h-12 rounded-xl sm:w-auto lg:w-auto"{...register("date",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.date? "true":"false"}></input>
+                {errors.date && <p  role="alert" className="text-red-500 ">{errors.date?.message}</p>}
 
                 <label className="after:content-['*'] after:ml-0.5 after:text-red-500 pb-3 pt-4">เมื่อวานทำอะไร</label>
                 <input placeholder="เมื่อวานทำอะไร" className="px-5 shadow w-auto h-12 rounded-xl sm:w-auto lg:w-auto"{...register("yesterday",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.yesterday? "true":"false"}yesterday></input>
@@ -66,17 +102,18 @@ const FormDailyScrum = () =>{
                 <p className="after:content-['*'] after:ml-0.5 after:text-red-500 mb-3 mt-4">หมายเหตุ</p>
                 <Select
         
-                    options={Status}
-                    {...register("Status",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.Status? "true":"false"}
-                    onChange={handleSelectStatus}
+                    options={note}
+                    {...register("note",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.note? "true":"false"}
+                    onChange={handleSelectNote}
+                    checked={getValues()}
                     ></Select>
-                    {errors.Status && <p  role="alert" className="text-red-500 ">{errors.Status?.message}</p>}
+                    {errors.note && <p  role="alert" className="text-red-500 ">{errors.note?.message}</p>}
                 
             </div>
             <div className="flex flex-col mb-5">
                 <label className="after:content-['*'] after:ml-0.5 after:text-red-500 pb-3 pt-4">อื่น ๆ</label>
-                <input placeholder="อื่น ๆ" className="px-5 shadow w-auto h-12 rounded-xl sm:w-auto lg:w-auto"{...register("other",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.other? "true":"false"}other></input>
-                {errors.other && <p  role="alert" className="text-red-500 ">{errors.other?.message}</p>}
+                <input placeholder="อื่น ๆ" className="px-5 shadow w-auto h-12 rounded-xl sm:w-auto lg:w-auto"{...register("others",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.others? "true":"false"}></input>
+                {errors.others && <p  role="alert" className="text-red-500 ">{errors.others?.message}</p>}
             </div>
             <div className="flex flex-row justify-between ">
                 <button className="w-44 h-12 border rounded-xl border-danger hover:bg-danger hover:text-white text-danger text-center  ml-5 sm:ml-24 md:mr-9 ">ยกเลิก</button>

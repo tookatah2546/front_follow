@@ -1,15 +1,27 @@
 "use client"
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/app/context/authentication";
+import { useRouter } from "next/navigation";
 const NavigationTop = ()=>{
-    const {currentUser,submitLogout} = useAuth()
+    const {currentUser,submitlogout} = useAuth()
+    const [isAuth, setisAuth ] = useState(false)
+  
+    useEffect(() =>{
+      setisAuth(currentUser != null)
+    },[currentUser]);
 
+    const router = useRouter()
+
+    const logout = (e) => {
+      submitlogout(e)
+      router.replace("/login_users")
+    }
     
     return(
       <section id="top-navigation" className="block mb-6 h-12  bg-primary shadow">
       {
-        currentUser ? (
+        isAuth ? (
           
           
           <div id="tabs" className="w-full flex  ">
@@ -19,9 +31,9 @@ const NavigationTop = ()=>{
               <span className="tab tab-kategori block text-base ">โปรไฟล์</span>
             </a>
             <a
-              onClick={submitLogout}
+              onClick={logout}
               className="w-full my-1 text-white focus:text-secondary hover:text-secondary justify-center inline-block text-center pt-2 pb-1">  
-              <button type="submit" className="tab tab-kategori block text-base ">ออกจากระบบ</button>
+              <button type="submit" className="tab tab-kategori block text-base  ">ออกจากระบบ</button>
             </a>
           </div>
         

@@ -36,15 +36,10 @@ const LoginUsers= () =>{
             </div>
             <div className="border-b-2 my-8 border-extar-light-grey  "></div>
             
-            {
-              currentUser ? (
-              <Button  color="primary" onClick={submitlogin} title="เข้าสู่ระบบ"/>
-              ):(
-                <Button  color="primary" onClick={submitlogin} title="เข้าสู่ระบบ"/>
-                )
-            }
+           
+            <Button  color="primary" title="เข้าสู่ระบบ"/>
             
-            
+      
             <div className="font-medium text-center mt-4 ">
                 <p className="mb-2  text-mid-grey">การสร้างบัญชีหรือการเข้าใช้งาน หมายถึงคุณได้อ่านและยอมรับ</p>
                 <p>เงื่อนไขข้อกำหนด <span className="text-mid-grey">และ</span> นโยบายความเป็นส่วนตัว</p>
@@ -54,8 +49,3 @@ const LoginUsers= () =>{
 }
 
 export default LoginUsers;
-/*<div className="pt-4 pb-3">
-    <input type="checkbox" className="border w-4 h-4 accent-black  " {...register("Checkbox",{required: "* กรุณากรอกข้อมูล"})} aria-invalid={errors.Checkbox? "true":"false"}></input>
-    <label className="ml-2 after:content-['*'] after:ml-0.5 after:text-red-500">ฉันได้อ่านและยอมรับเงื่อนไขการเป็นสมาชิกและนโยบายความเป็นส่วนตัว</label>
-    {errors.Checkbox && <p  role="alert" className="text-red-500 ">{errors.Checkbox?.message}</p>}
-</div>*/

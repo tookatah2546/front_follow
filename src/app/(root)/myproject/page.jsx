@@ -23,7 +23,7 @@ const MyProjectPage = () => {
             {projects.map((e)=>{
                 return (
                     <div className="border rounded-lg my-4 px-5 w-full h-11 ">
-                        <a href="backlog"><p className="my-2"> id : {e.id} {e.title}</p></a>
+                        <a href="detailproject"><p className="my-2"> id : {e.id} {e.title}</p></a>
                     </div>
                 )
             })}

@@ -21,16 +21,12 @@ export default function RootLayout({ children }) {
       <body className={sarabun.className} >
       <AuthProvider>
         <ProjectProvider>  
-            <main className="w-full md:w-2/4 h-screen  mx-auto   items-center justify-between ">
             
-              <NavigationTop/>
               {children}
-              <NavigationMenu/>
             
-            </main>
         </ProjectProvider>
       </AuthProvider>
-         
+           
       </body>
     </html>
   );

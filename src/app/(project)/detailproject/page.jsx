@@ -7,6 +7,7 @@ import React, { useState } from "react";
 
 const ProjectBacklog = () => {
   const [openModalBacklog, setModalBacklog] = useState(false);
+  
     return (
       <main className="h-screen px-6" >
        <div className="">
@@ -27,13 +28,17 @@ const ProjectBacklog = () => {
         </div>
        </div>
       <div className="border-b-2 my-6 border-extar-light-grey "></div>
-      <div className="">
-        <p className="text-xl font-extrabold text-center">ชื่อโปรเจกต์ : </p>
-        <p className="pt-2">Trello : <a href="register_users" className="ml-3 underline underline-offset-2">Trello link</a> </p>
-        <p className="pt-2">Figma :<a href="register_users" className="ml-3 underline underline-offset-2">Figma link</a> </p>
-        <p className="pt-2">Daily scrum :<a href="register_users" className="ml-3 underline underline-offset-2">View</a> </p>
+      <p className="text-xl font-extrabold text-start">ชื่อโปรเจกต์ : </p>
+      <div >
+          <p className="pt-2">Trello : 
+          <a className="ml-3 underline underline-offset-2">Trello link</a> </p>
+
+        <p className="pt-2">Figma :
+        <a href="register_users" className="ml-3 ">Figma link</a> </p>
+        <p className="pt-2">Daily scrum :
+        <a href="register_users" className="ml-3 underline underline-offset-2">View</a> </p>
         <p className="pt-2">Product backlogs : 6 </p>
-       </div>
+      </div>
        <div class="grid grid-cols-3 grid-flow-row gap-10 pt-6">
         <button className="" onClick={() => {setModalBacklog(true);}}>
         <div className="w-full h-32 border rounded-3xl  border-gray-600 text-center">
