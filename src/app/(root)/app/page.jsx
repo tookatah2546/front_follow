@@ -15,7 +15,6 @@ export default function(){
             <p className="my-2"> id : </p>
         </div>
         
-       
     </div>
     <a href="createsubject">
          <div className="">

@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
     if(token == null){
       setUser(null)
       setLoadFinished(true)
-      router.replace("/login_users")
+      // router.replace("/login_users")
     }else {
       client.defaults.headers.common['Authorization'] = "Token "+ localStorage.getItem("token")
       let result = await client.get("/api/user")
@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }) => {
 
       if(user == null){
         setLoadFinished(true)
-        router.replace("/login_users")
+        // router.replace("/login_users")
       }
     }
     setLoadFinished(true)  

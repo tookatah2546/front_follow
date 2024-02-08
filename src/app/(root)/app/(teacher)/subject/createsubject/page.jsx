@@ -1,18 +1,14 @@
-
-"use client"
-
+ "use client"
 
 import FromCreateSubject from "@/components/form/createsubject";
 
-
-
-const CreateSubjectPage = () => {
- 
+export default function({params}){
     return (
-      <main className="w-full h-screen px-8 mt-24 " >
-        <FromCreateSubject/>
-      </main>
+        <main className="w-full h-screen px-10 mt-24">
+            
+            <FromCreateSubject/>
+
+        </main>
+    
     )
-  }
-  
-  export default CreateSubjectPage;
+}
