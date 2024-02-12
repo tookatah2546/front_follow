@@ -2,7 +2,7 @@ import NavigationMenu from "@/components/layouts/navigationmanu";
 import NavigationTop from "@/components/layouts/navigationtop";
 
 const ProjectLayout = ({ children }) => {
-    return <section className="w-full h-screen px-8">
+    return <section className="w-full h-screen px-6">
         <NavigationTop/>
         {children}
         <NavigationMenu/>

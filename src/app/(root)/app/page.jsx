@@ -1,6 +1,6 @@
 export default function(){
     return (
-    <main className=" px-10 my-20 h-screen" >
+    <main className=" px-6 my-20 h-screen" >
     <div className="flex flex-row justify-between">
      <p className="font-extrabold my-3">โปรเจกต์ทั้งหมด</p>
      <a href="creategroup">

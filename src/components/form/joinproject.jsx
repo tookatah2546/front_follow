@@ -35,7 +35,7 @@ const JoinProject = () => {
     }
 
     return (
-        <form className="flex flex-col border rounded-xl  px-8 pb-10 " onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col border rounded-xl  px-6 pb-10 " onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4 mt-3">
                 <p className="text-3xl text-dark-grey">เข้าร่วมโปรเจกต์</p>
             </div>

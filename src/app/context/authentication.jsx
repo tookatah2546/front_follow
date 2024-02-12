@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ currentUser, submitlogin, submitlogout , loadFinished }}>
-      <div style={loadFinished ? {display:'none'}  : {}}>
+      <div style={loadFinished ? {display:'none'}  : {}} className="h-screen animate-bounce  text-center text-2xl font-extrabold  flex justify-center items-center">
         Loading...
       </div>
       <div style={loadFinished ? {}  : {display:'none'}}>

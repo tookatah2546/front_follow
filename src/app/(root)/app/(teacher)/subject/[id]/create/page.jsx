@@ -4,7 +4,7 @@ import FromCreateGroup from "@/components/form/createproject";
 
 export default function({params}){
     return (
-        <main className="px-10 h-screen">
+        <main className="px-6 h-screen">
             <div>form for create project for subject id {params.id} </div>
             <FromCreateGroup/>
 

@@ -22,7 +22,7 @@ const FromCreateSubject = () => {
 
 
     return (
-        <form className="flex flex-col border rounded-xl  px-8 pb-10 " onSubmit={handleSubmit(onSubmit)}>
+        <form className="flex flex-col border rounded-xl  px-6 pb-10 " onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4 mt-6">
                 <p className="text-xl font-extrabold text-center">สร้างวิชา</p>
             </div>
