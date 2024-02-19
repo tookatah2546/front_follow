@@ -1,3 +1,5 @@
+import { Router,  } from "next/router";
+
 const ModalBacklog = ({ closebacklog, params })=>{
 
     return(
@@ -9,8 +11,7 @@ const ModalBacklog = ({ closebacklog, params })=>{
                     <h1>Product Backlog </h1>
                     </div>
                     <div className="my-2 flex flex-row justify-around px-6">
-                    <a href='task'>  
-                    <button className="h-12 w-24 border  bg-primary rounded-xl text-white" >แก้ไข</button></a>  
+                    <button onClick={() => Router.push('/app/suject/${id}/project/${pid}')} className="h-12 w-24 border  bg-primary rounded-xl text-white" >แก้ไข</button> 
                     <button className="h-12 w-24 border  border-danger rounded-xl text-danger" onClick={() => closebacklog(false)}>ลบ</button>
                     </div>
                 </div>

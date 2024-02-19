@@ -103,7 +103,7 @@ export default function({params}){
            <button type="button" className="h-8 w-12  bg-primary rounded-lg text-white" onClick={handleAddTodo}>เพิ่ม</button>
          </div>
         </form>
-        <ul>
+        <ul className="overflow-y-auto h-auto">
             {todos.map((todo,index) => (
             <div key={index} className="border border-danger rounded-lg my-5 px-5 w-full h-11 flex flex-row justify-between">
             <p className="my-2">{todo}</p>
